@@ -1,0 +1,13 @@
+cluster.name: dev-kibana-cluster
+network.host: 0.0.0.0
+
+# Lock the memory on startup:
+bootstrap.memory_lock: true
+
+### x-pack functions
+xpack.security.enabled: false
+xpack.monitoring.enabled: true
+xpack.watcher.enabled: false
+xpack.graph.enabled: false
+
+xpack.monitoring.history.duration: 1d
