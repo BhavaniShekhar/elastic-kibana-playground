@@ -32,6 +32,17 @@ services:
     environment:
       ELASTICSEARCH_URL: http://es:9200
 
+  fluentd:
+    build: ./fluentd
+    container_name: fluentd
+    ports:
+      - 24224:24224
+    environment:
+      FLUENTD_CONF: fluentd.conf
+    volumes:
+      - ./fluentd/log:/fluentd/log
+      - ./fluentd/config:/fluentd/etc
+
 volumes:
   es_data:
     driver: local
