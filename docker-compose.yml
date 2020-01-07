@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 
 services:
   es:
@@ -19,7 +19,12 @@ services:
       - ./es/synonyms/userdict_ja.txt:/usr/share/elasticsearch/config/userdict_ja.txt
     ports:
       - 9200:9200
+      - 9300:9300
     environment:
+      - bootstrap.memory_lock=true
+      - node.name=es
+      - discovery.seed_hosts=es
+      - cluster.initial_master_nodes=es
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
 
   kibana:
